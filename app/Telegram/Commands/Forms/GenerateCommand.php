@@ -37,35 +37,20 @@ class GenerateCommand extends BaseCommand
 
         if ($form->destination) {
             try {
-                // get list of all the domains
-                $domains = config('settings.domains');
-                // shuffle the list
-                shuffle($domains);
-                // Short url work
+             
                 $builder = new Builder();
 
-                $destination_url = $form->destination;
+                 $destination_url = $form->destination;
 
-                foreach ($domains as $key => $domain) {
-
-                    if ($key == 0) {
-                        $destination_url .= "?iod=" . $form->getHash();
-                    } else if ($key == 1) {
-                        $destination_url .= "/lansdp"; # add query to load the anti-spam detect page
-                    }
-        $expire =Subscription::find($this->getClient()->subscription_id);
-
-        //             $min =$expire->expire_at;
-        $date = Carbon::parse($expire->expire_at);
-$now = Carbon::now();
-
-$diff = $date->diffInDays($now);
                   
-                    $shortURLObject = $builder->destinationUrl($destination_url)->domain($domain)->deactivateAt(\Carbon\Carbon::now()->addDays($diff))->make();
+                    $shortURLObject = $builder->destinationUrl($destination_url)->make();
+                    $shortURLObject->compain_id =self::$id;
+                    $shortURLObject->user_id =$this->getClient()->id;
+                    $shortURLObject->save();
 
                     $destination_url = $shortURLObject->default_short_url;
 
-                }
+                
               
 
                 $keyboard = Keyboard::make()

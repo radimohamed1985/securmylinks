@@ -36,9 +36,9 @@ class FormCommand extends BaseCommand
         $this->authenticate();
 
         // TODO: Refactor
-        $form = Form::where('owner', $this->getClient()->id)->where('form_number', self::$id)->first();
+        // $form = Form::where('owner', $this->getClient()->id)->where('form_number', self::$id)->first();
 
-        if (!$form) {
+        // if (!$form) {
             $form = new Form();
             $form['name'] = "Form " . self::$id;
             $form['form_number'] = self::$id;
@@ -46,7 +46,7 @@ class FormCommand extends BaseCommand
             $form["owner"] = $this->getClient()->id;
 
             $form->save();
-        }
+        // }
 
         if (isset(self::$action)) {
 

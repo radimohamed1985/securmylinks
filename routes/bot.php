@@ -7,11 +7,9 @@ use Illuminate\Support\Facades\Route;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 
-Route::get('flbruiugajfiitnxccqguzoayxhupsrvpmrftncufqbimgqniqhfyvjvzhnqapitcwqhyncnumikmyfcgpkxommsqzlrchuwwkcjlgmbuvgzdokhebomcbcoznbfpcfd/webhook',function(){
-    return "hello";
- });
-Route::get(config('telegram.bots.mybot.webhook_url_hash') . '/webhook', function () {
-return "mmmmmmm";
+
+Route::post(config('telegram.bots.mybot.webhook_url_hash') . '/webhook', function () {
+// return "mmmmmmm";
     // Accept command
     Telegram::commandsHandler(true);
     // Listen for Webhook's updates

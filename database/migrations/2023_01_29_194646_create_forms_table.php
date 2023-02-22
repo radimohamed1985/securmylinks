@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->boolean("enabled")->nullable()->default(true);
             $table->text('destination')->nullable();
             $table->string('style')->nullable();
-            $table->enum('form_number', [1, 2, 3]);
+            $table->enum('form_number', [1, 2, 3,4,5,6]);
             $table->foreignId("owner")
                 ->references('id')
                 ->on('clients')

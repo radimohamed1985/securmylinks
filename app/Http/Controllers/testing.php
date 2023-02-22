@@ -30,7 +30,7 @@ class testing extends Controller
     // return    Message::get();
     // return    ShortURL::get();
     // return    Lead::get();
-    return    Subscription::get();
-    // return    Form::get();
+    // return    Subscription::get();
+    return    Form::get();
     }
 }

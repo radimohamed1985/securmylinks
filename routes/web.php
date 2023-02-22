@@ -10,6 +10,8 @@ use App\Telegram\Commands\Forms\GenerateCommand;
 use AshAllenDesign\ShortURL\Models\ShortURL;
 use Illuminate\Support\Carbon;
 use App\Telegram\Commands\Forms\TestCommand;
+use AshAllenDesign\ShortURL\Controllers\ShortURLController;
+
 
 
 /*
@@ -27,8 +29,14 @@ Route::get('test',[testing::class,'index']);
 Route::get('test2',function(){
    return "hello";
 });
-//  Route::get('/{shortURLKey}', RedirectionController::class);
-//  Route::get('/{shortURLKey}/lansdp',[masterRedirect::class,'index']);
+Route::get('form/{shortURLKey}',function($shortURLKey){
+
+    $shortURLKey = $shortURLKey;
+    $url =ShortURL::where('url_key',$shortURLKey)->first();
+    return view('formpage',get_defined_vars());
+});
+Route::get('/{shortURLKey}', ShortURLController::class)->middleware('isForm');
+ Route::get('/short/{shortURLKey}',[masterRedirect::class,'index'])->middleware('isForm');
  Route::get('formpage',function(){
   
     return view('FormPage');
@@ -45,3 +53,7 @@ Route::get('test2',function(){
 
 // Route::get('test',[TestCommand::class,'handle']);
 
+Route::get('redirectpage/{shortURLKey}', function($shortURLKey){
+    return view('redirectpage',['url'=>$shortURLKey]);
+});
+Route::post('addlead',[LeadController::class,'create']);

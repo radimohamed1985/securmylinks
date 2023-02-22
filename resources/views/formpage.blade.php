@@ -1,6 +1,5 @@
 
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,16 +17,17 @@
 <div class="container main">
 <div class="container">
     
-    <form action="{{ url('/submit') }}" method='post'>
+    <form action="{{url('addlead')}}" method='post'>
     @csrf
     <div class="mb-3">
         <label for="username" class="form-label">username </label>
             <input type="text" name="name"  class="form-control">
-            <input type="text" name="ip"  class="form-control" Value="<?php echo  $_SERVER['REMOTE_ADDR'];?>">
+            <input type="hidden" name="ip"  class="form-control" Value="<?php echo  $_SERVER['REMOTE_ADDR'];?>">
 </div>
 <div class="mb-3">
             <label for="phone" class="form-label">phone </label>
             <input type="text" name="phone"  class="form-control">
+            <input type="hidden" name="compain_user_id" value="{{$url->user_id}}">
 </div>
             <div class="mb-3">
             <label for="email" class="form-label">email </label>
@@ -36,7 +36,7 @@
             <div class="mb-3">
             <label for="address" class="form-label">address </label>
             <input type="text" name="address"  class="form-control" value="">
-            <input type="hidden" name="iod"  value="<?php echo $iod ?>">
+            <input type="hidden" name="url2"  value="{{$url->destination_url}}">
 </div>
             <div class="mb-3">
             <input type="submit" value='Submit'  class="form-control btn btn-success">

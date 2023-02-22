@@ -42,5 +42,6 @@ return [
         env('APP_DOMAIN_2', null),
         env('APP_DOMAIN_3', null),
     ],
+    
     'BotRedirectUrl' => env('BotRedirectUrl')
 ];

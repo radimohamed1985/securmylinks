@@ -8,6 +8,7 @@ use  App\Models\Subscription;
 use  App\Models\Message;
 use  App\Models\Form;
 use  App\Models\Lead;
+use  App\Models\Lead2;
 use  App\Models\User;
 use App\Telegram\Commands\Core\BaseCommand;
 use AshAllenDesign\ShortURL\Models\ShortURL;
@@ -30,7 +31,8 @@ class testing extends Controller
     // return    Message::get();
     // return    ShortURL::get();
     // return    Lead::get();
+    return    Lead2::get();
     // return    Subscription::get();
-    return    Form::get();
+    // return    Form::get();
     }
 }

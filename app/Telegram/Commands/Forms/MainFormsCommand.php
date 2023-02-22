@@ -42,9 +42,9 @@ class MainFormsCommand extends BaseCommand
                         Keyboard::inlineButton(['text' => 'form  6', 'callback_data' => 'form 6'])
                         )
                 ->row(
-                    Keyboard::inlineButton(['text' => 'Report', 'callback_data' => 'example1']),
-                    Keyboard::inlineButton(['text' => 'Downlaod', 'callback_data' => 'example2']),
-                    Keyboard::inlineButton(['text' => 'Settings', 'callback_data' => 'example3'])
+                    Keyboard::inlineButton(['text' => 'Report', 'callback_data' => 'report']),
+                    Keyboard::inlineButton(['text' => 'My Leads', 'callback_data' => 'lead']),
+                    // Keyboard::inlineButton(['text' => 'Settings', 'callback_data' => 'example3'])
                 );
 
             $this->replyWithMessage(['text' => "Select a Form to Setup", 'reply_markup' => $keyboard]);

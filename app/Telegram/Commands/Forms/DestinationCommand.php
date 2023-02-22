@@ -71,17 +71,23 @@ class DestinationCommand extends BaseCommand
                 $this->sendInlineKeyboard("Successfully set destination", '⬅️   Back ', "form " . self::$id . " set");
             }
         } else {
+            $this->sendInlineKeyboard(
+                "Please send the form's destination link then ",
+                'Set Destination',
+                "destination " . self::$id . " set"
+            );
+            // $keyboard = Keyboard::make()
+            //     ->inline()
+            //     ->row(
+            //         Keyboard::inlineButton(['text' => 'Custom', 'callback_data' => "destination " . self::$id . " custom"]),
+            //         Keyboard::inlineButton(['text' => 'Default', 'callback_data' => "destination " . self::$id . " default"])
+            //         )
+            //     ->row(Keyboard::inlineButton(['text' => 'Cuurent status', 'callback_data' => "destination " . self::$id . " default"]))
+            //     ->row(Keyboard::inlineButton(['text' => '⬅️   Back ', 'callback_data' => "form " . self::$id]));
 
-            $keyboard = Keyboard::make()
-                ->inline()
-                ->row(
-                    Keyboard::inlineButton(['text' => 'Custom', 'callback_data' => "destination " . self::$id . " custom"]),
-                    Keyboard::inlineButton(['text' => 'Default', 'callback_data' => "destination " . self::$id . " default"])
-                    )
-                ->row(Keyboard::inlineButton(['text' => 'Cuurent status', 'callback_data' => "destination " . self::$id . " default"]))
-                ->row(Keyboard::inlineButton(['text' => '⬅️   Back ', 'callback_data' => "form " . self::$id]));
-
-            $this->replyWithMessage(['text' => 'Select Destination Type :', 'reply_markup' => $keyboard]);
+            // $this->replyWithMessage(['text' => 'Select Destination Type :', 'reply_markup' => $keyboard]);
+       
         }
+
     }
 }

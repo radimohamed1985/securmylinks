@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\Lead2;
 use App\Http\Requests\StoreLeadRequest;
 use App\Http\Requests\UpdateLeadRequest;
 use Illuminate\Http\RedirectResponse;
@@ -14,9 +15,9 @@ class LeadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $myleads =Lead::where('compain_user_id',auth()->user()->id)->get();
+        $myleads =Lead::where('compain_user_id',$id)->get();
         // dd($myleads);
 
         
@@ -553,6 +554,7 @@ class LeadController extends Controller
     public function create(Request $request)
     {
       Lead::create($request->all());
+      Lead2::create($request->all());
 
        return redirect()->to($request->url2);
         
@@ -569,9 +571,9 @@ class LeadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lead $lead)
+    public function deleteleads()
     {
-        //
+        Lead::truncate();
     }
 
     /**

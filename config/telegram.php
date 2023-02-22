@@ -6,6 +6,8 @@ use App\Telegram\Commands\Admin\GenerateTrailKeyCommand;
 use App\Telegram\Commands\Admin\CheckCommand;
 use App\Telegram\Commands\Forms\DestinationCommand;
 use App\Telegram\Commands\Forms\FormCommand;
+use App\Telegram\Commands\Forms\ReportCommand;
+use App\Telegram\Commands\Forms\LeadsCommand;
 use App\Telegram\Commands\Forms\GenerateCommand;
 use App\Telegram\Commands\Forms\MainFormsCommand;
 use App\Telegram\Commands\Forms\StatusCommand;
@@ -59,7 +61,9 @@ return [
                 FormCommand::class,
                 DestinationCommand::class,
                 StatusCommand::class,
-                GenerateCommand::class
+                GenerateCommand::class,
+                ReportCommand::class,
+                LeadsCommand::class
             ],
         ],
 

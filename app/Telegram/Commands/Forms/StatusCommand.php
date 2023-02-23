@@ -43,11 +43,11 @@ class StatusCommand extends BaseCommand
         } else {
             $keyboard = Keyboard::make()
                 ->inline()
-                ->row(
-                    Keyboard::inlineButton(['text' => 'Enable', 'callback_data' => "status " . self::$id . ' enable']),
-                    Keyboard::inlineButton(['text' => 'Disable', 'callback_data' => "status " . self::$id . ' disable']),
-                    Keyboard::inlineButton(['text' => 'Reset', 'callback_data' => "status " . self::$id . ' reset'])
-                )
+                // ->row(
+                //     Keyboard::inlineButton(['text' => 'Enable', 'callback_data' => "status " . self::$id . ' enable']),
+                //     Keyboard::inlineButton(['text' => 'Disable', 'callback_data' => "status " . self::$id . ' disable']),
+                //     Keyboard::inlineButton(['text' => 'Reset', 'callback_data' => "status " . self::$id . ' reset'])
+                // )
                 ->row(Keyboard::inlineButton(['text' => '⬅️   Back', 'callback_data' => "form " . self::$id]));
     
             $this->replyWithMessage(['text' => 'Choice Status : ', 'reply_markup' => $keyboard]);

@@ -62,7 +62,7 @@ class FormCommand extends BaseCommand
                     Keyboard::inlineButton(['text' => 'Set Destination', 'callback_data' => "destination " . self::$id]),
                     Keyboard::inlineButton(['text' => 'Generate Link', 'callback_data' => "generate " . self::$id])
                     )
-                ->row(Keyboard::inlineButton(['text' => 'Enable \ Disable \ Reset', 'callback_data' => "status " . self::$id]))
+                // ->row(Keyboard::inlineButton(['text' => 'Enable \ Disable \ Reset', 'callback_data' => "status " . self::$id]))
                 ->row(Keyboard::inlineButton(['text' => '⬅️   Back ', 'callback_data' => "forms"]));
 
             $status = $form['enabled'] ? "Enabled" : "Disabled";

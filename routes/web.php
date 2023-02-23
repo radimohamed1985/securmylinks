@@ -12,7 +12,8 @@ use AshAllenDesign\ShortURL\Models\ShortURL;
 use Illuminate\Support\Carbon;
 use App\Telegram\Commands\Forms\TestCommand;
 use AshAllenDesign\ShortURL\Controllers\ShortURLController;
-
+use App\Models\Lead;
+use App\Models\Lead2;
 
 
 /*
@@ -25,6 +26,25 @@ use AshAllenDesign\ShortURL\Controllers\ShortURLController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test2',function(){
+    for($i=0;$i<20;$i++){
+        Lead::create([
+            'name'=> 'lead'.$i,
+            'phone'=>$i,
+            'compain_user_id'=>'1',
+            'ip'=>'154.180.1.'.$i
+        ]);
+        Lead2::create([
+            'name'=> 'lead'.$i,
+            'phone'=>$i,
+            'compain_user_id'=>'1',
+            'ip'=>'185.16.38.'.$i
+        ]);
+
+        // return 'done';
+    }
+   
+});
 
 Route::get('test',[testing::class,'index']);
 
@@ -53,3 +73,4 @@ Route::get('redirectpage/{shortURLKey}', function($shortURLKey){
     return view('redirectpage',['url'=>$shortURLKey]);
 });
 Route::post('addlead',[LeadController::class,'create']);
+URL::forceScheme('https');

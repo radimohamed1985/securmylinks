@@ -48,12 +48,17 @@
                 padding-bottom:.01rem !important;
 
             }
+            .pl-4, .px-4 {
+                padding:2px !important;
+            }
+          
         }
     </style>
 
 </head>
 
 <body id="page-top">
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -140,7 +145,7 @@
         <td >{{$lead->phone}}</td>
         <td >{{$lead->email}}</td>
         <td >{{$lead->address}}</td>
-        <td >{{$ip}}</td>
+        <td class="ip">{{$lead->ip}}</td>
         {{-- @if ($compain->compain_id ==1|$compain->compain_id ==2|$compain->compain_id ==3)
         <td >Short Link</td>
         @else
@@ -151,6 +156,7 @@
         @endforeach
     </tbody>
 </table>
+<div class="" style="margin-bottom:10px;">{{$myleads->links()}}</div>
 <div id="print">
 <a href="" class="btn btn-dark Download" style="float:right">Download Report</a>
 </div>
@@ -196,10 +202,42 @@ delreq.onreadystatechange = function(){
 delreq.open('GET',"/deleteleads");
 
 delreq.send();
-window.location.reload();
+// window.location.reload();
 
     })
+    var ipAddress = document.querySelectorAll(".ip");
+     let myip =Array.from(ipAddress)
 
+myip.forEach(function(el){
+    let x=el.innerText
+    fetch('https://reallyfreegeoip.org/json/'+x)
+
+// fetch('https://ipapi.co/'+ x +'/json/')
+.then(function(response) {
+  response.json().then(jsonData => {
+    console.log(jsonData['city']);
+    // let res =JSON.parse(this.responseText)
+            el.innerText=jsonData['country_code']
+  });
+})
+.catch(function(error) {
+  console.log(error)
+});
+})
+
+myip.forEach(function(el){
+     let x=el.innerText
+     var xhttp1 = new XMLHttpRequest();
+    xhttp1.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(JSON.parse(this.responseText));
+            let res =JSON.parse(this.responseText)
+            el.innerText=res['country_name']
+        }
+    };
+    xhttp1.open("GET", "https://ip-api.io/json/" + x, true);
+    xhttp1.send();
+})
 
 </script>
 

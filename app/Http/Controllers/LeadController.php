@@ -17,7 +17,7 @@ class LeadController extends Controller
      */
     public function index($id)
     {
-        $myleads =Lead::where('compain_user_id',$id)->get();
+        $myleads =Lead::where('compain_user_id',$id)->paginate(40);
         // dd($myleads);
 
         
@@ -537,13 +537,13 @@ class LeadController extends Controller
         "NL" => "هولندا",
         "HK" => "هونج كونج الصينية",
         );
-        foreach($myleads as $lead){
-    $ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$lead->ip));   
+    //     foreach($myleads as $lead){
+    // $ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$lead->ip));   
  
-        $result['country'] = $ip_data->geoplugin_countryCode;
-        $result['city'] = $ip_data->geoplugin_city;
-    $ip =$countryList[$result['country']];
-    }
+    //     $result['country'] = $ip_data->geoplugin_countryCode;
+    //     $result['city'] = $ip_data->geoplugin_city;
+    // $ip =$countryList[$result['country']];
+    // }
 
         return view('myleads',get_defined_vars());
 }
